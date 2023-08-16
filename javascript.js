@@ -50,7 +50,7 @@ function createNewCard(t, a, p, r, bookId) {
     card.appendChild(toggleRead);
     card.dataset.index = bookId;
     deleteButton.textContent = "Delete Book";
-    toggleRead.textContent = "Undo Read";
+    toggleRead.textContent = "Toggle Read";
 
     cardHeader.textContent = t;
     cardAuthor.textContent = a;
@@ -73,7 +73,12 @@ function createNewCard(t, a, p, r, bookId) {
     });
 
     toggleRead.addEventListener('click', function () {
-
+        let toToggle = myLibrary.findIndex((obj) => {
+            return obj.id == card.dataset.index;
+        });
+        console.log(toToggle);
+        myLibrary[toToggle].read == 'read' ? myLibrary[toToggle].read = 'not read' : myLibrary[toToggle].read = 'read';
+        cardRead.textContent = myLibrary[toToggle].read;
     })
 };
 
