@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>MY LIBRARY</header>
+        <div class="cardCtn"></div>
+        <dialog>
+            <p>New Book</p>
+            <form action="" method="post">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="Ex: The Lord of the Rings">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" placeholder="Ex: J. R. R. Tolkien">
+                <label for="pages">Pages</label>
+                <input type="number" name="" id="pages" placeholder="Ex: 350">
+                <label for="read">
+                    <input type="checkbox" name="read" id="read" value="readed">Have you read it?</label>
+                <div class="cancel-add-buttons">
+                    <button id='cancel-dialog' value="cancel" formmethod="dialog">Cancel</button>
+                    <button id='submit-dialog'>Add Book</button>
+                </div>
+            </form>
+        </dialog>
+        <div class="buttonCtn">
+            <button id="showDialog">NEW BOOK</button>
+        </div>
+        <footer>Created by RadTradCath</footer>
+    </div>
+
+</body>
+
+</html>

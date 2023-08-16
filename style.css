@@ -1,0 +1,49 @@
+* {
+    font-size: 1.3rem;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(3, 55, 100);
+    margin: 0;
+}
+
+header,
+footer {
+    background-color: rgb(15, 101, 177);
+    text-align: center;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 50px 5fr 1fr 50px;
+}
+
+.cardCtn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+
+.buttonCtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    color: rgb(3, 55, 100);
+}
+
+.container dialog {
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+}
