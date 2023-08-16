@@ -82,7 +82,10 @@ function createNewCard(t, a, p, r, bookId) {
     })
 };
 
-submitDialog.addEventListener('click', () => {
+submitDialog.addEventListener('click', (e) => {
+    if (bookPages.value <= 0) {
+        return void(0);
+    }
     inputTitle = bookTitle.value;
     inputAuthor = bookAuthor.value;
     inputPages = bookPages.value + " pages";
@@ -93,6 +96,7 @@ submitDialog.addEventListener('click', () => {
     bookPages.value = "";
 
     dialog.close();
+    e.preventDefault();
 });
 
 bookRead.addEventListener('click', () => {
@@ -109,7 +113,4 @@ showBtn.addEventListener('click', () => {
     dialog.showModal();
 });
 
-submitDialog.addEventListener('click', (e) => {
-    e.preventDefault();
-})
 
