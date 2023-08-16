@@ -57,7 +57,7 @@ function createNewCard(t, a, p, r, bookId) {
     cardPages.textContent = p;
     cardRead.textContent = r;
 
-    card.setAttribute('style', 'background-color: red; width: 300px; height: 400px; margin-top: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow-wrap: break-word');
+    card.setAttribute('style', 'background-color: rgb(24, 141, 161); width: 300px; height: 400px; margin-top: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow-wrap: break-word');
     cardContainer.appendChild(card);
 
     deleteButton.setAttribute('style', 'width: 100px; height: 50px; font-size: 1rem');
