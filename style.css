@@ -2,6 +2,10 @@
     font-size: 1.3rem;
 }
 
+button {
+    background-color: white;
+}
+
 body {
     height: 100vh;
     background-color: rgb(3, 55, 100);

@@ -18,11 +18,11 @@ let myLibrary = [];
 let counter = 0;
 
 function Book(title, author, pages, read) {
-        this.title = title,
+    this.title = title,
         this.author = author,
         this.pages = pages,
         this.read = read
-        this.id = Book.prototype.counter++
+    this.id = Book.prototype.counter++
 }
 
 Book.prototype.counter = 0;
@@ -63,11 +63,11 @@ function createNewCard(t, a, p, r, bookId) {
     deleteButton.setAttribute('style', 'width: 100px; height: 50px; font-size: 1rem');
     toggleRead.setAttribute('style', 'width: 100px; height: 50px; font-size: 1rem');
 
-    deleteButton.addEventListener('click', function() {
-        let toDelete = myLibrary.filter((obj) => {            
-           return obj.id != card.dataset.index        
+    deleteButton.addEventListener('click', function () {
+        let toDelete = myLibrary.filter((obj) => {
+            return obj.id != card.dataset.index
         });
-        
+
         myLibrary = toDelete;
         deleteButton.parentElement.remove();
     });
@@ -86,13 +86,23 @@ submitDialog.addEventListener('click', () => {
     inputTitle = bookTitle.value;
     inputAuthor = bookAuthor.value;
     inputPages = bookPages.value + " pages";
-    inputRead = bookRead.hasAttribute('checked') ? "read" : "not read";
+    inputRead = bookRead.hasAttribute('class') ? "read" : "not read";
     createNewCard(inputTitle, inputAuthor, inputPages, inputRead, addBookToLibrary());
     bookTitle.value = "";
     bookAuthor.value = "";
     bookPages.value = "";
 
     dialog.close();
+});
+
+bookRead.addEventListener('click', () => {
+    if (!bookRead.hasAttribute('class')) {
+        console.log(bookRead.hasAttribute('class'));
+        bookRead.setAttribute('class', "check");
+        console.log(bookRead.hasAttribute('class'));
+    } else {
+         bookRead.removeAttribute('class');
+    }
 });
 
 showBtn.addEventListener('click', () => {
