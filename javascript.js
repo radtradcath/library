@@ -13,26 +13,39 @@ let inputAuthor;
 let inputPages;
 let inputRead;
 
-let myLibrary = [];
+// let myLibrary = [];
 
-let counter = 0;
+// let counter = 0;
 
-function Book(title, author, pages, read) {
-    this.title = title,
-        this.author = author,
-        this.pages = pages,
-        this.read = read
-    this.id = Book.prototype.counter++
+class Book {    
+
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = Book.increaseCounter();
+    }
+
+    static counter = 0;
+
+    static increaseCounter() {
+        return Book.counter++;
+    }
+
+    static myLibrary = [];
+
+    static createNewBook() {
+        let book = new Book(inputTitle, inputAuthor, inputPages, inputRead);
+        return book;
+    }
+
+    static addBookToLibrary() {
+        let book = Book.createNewBook();
+        Book.myLibrary.push(book);
+        return book.id;
+    }
 }
-
-Book.prototype.counter = 0;
-
-function addBookToLibrary() {
-    let book = new Book(inputTitle, inputAuthor, inputPages, inputRead);
-    myLibrary.push(book);
-    return book.id;
-}
-
 
 function createNewCard(t, a, p, r, bookId) {
     let card = document.createElement('div');
@@ -64,21 +77,21 @@ function createNewCard(t, a, p, r, bookId) {
     toggleRead.setAttribute('style', 'width: 100px; height: 50px; font-size: 1rem');
 
     deleteButton.addEventListener('click', function () {
-        let toDelete = myLibrary.filter((obj) => {
+        let toDelete = Book.myLibrary.filter((obj) => {
             return obj.id != card.dataset.index
         });
 
-        myLibrary = toDelete;
+        Book.myLibrary = toDelete;
         deleteButton.parentElement.remove();
     });
 
     toggleRead.addEventListener('click', function () {
-        let toToggle = myLibrary.findIndex((obj) => {
+        let toToggle = Book.myLibrary.findIndex((obj) => {
             return obj.id == card.dataset.index;
         });
         console.log(toToggle);
-        myLibrary[toToggle].read == 'read' ? myLibrary[toToggle].read = 'not read' : myLibrary[toToggle].read = 'read';
-        cardRead.textContent = myLibrary[toToggle].read;
+        Book.myLibrary[toToggle].read == 'read' ? Book.myLibrary[toToggle].read = 'not read' : Book.myLibrary[toToggle].read = 'read';
+        cardRead.textContent = Book.myLibrary[toToggle].read;
     })
 };
 
@@ -86,17 +99,19 @@ submitDialog.addEventListener('click', (e) => {
     if (bookPages.value <= 0) {
         return void(0);
     }
+    e.preventDefault();
+    dialog.close();
     inputTitle = bookTitle.value;
     inputAuthor = bookAuthor.value;
     inputPages = bookPages.value + " pages";
     inputRead = bookRead.hasAttribute('class') ? "read" : "not read";
-    createNewCard(inputTitle, inputAuthor, inputPages, inputRead, addBookToLibrary());
+    createNewCard(inputTitle, inputAuthor, inputPages, inputRead, Book.addBookToLibrary());
     bookTitle.value = "";
     bookAuthor.value = "";
     bookPages.value = "";
 
-    dialog.close();
-    e.preventDefault();
+    // dialog.close();
+    // e.preventDefault();
 });
 
 bookRead.addEventListener('click', () => {
